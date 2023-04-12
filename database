@@ -1,5 +1,6 @@
 use TripCollaborator
 switched to db TripCollaborator
+   #retrieving 'person' collection
 TripCollaborator> db.person.find();
 [
   {
@@ -24,6 +25,7 @@ TripCollaborator> db.person.find();
     trips: [ { trip_id: 'Eu007', role: 'organizer' } ]
   }
 ]
+   #retrieving 'trips' collection
 TripCollaborator> db.trips.find();
 [
   {
@@ -40,6 +42,7 @@ TripCollaborator> db.trips.find();
     expenses: [ { amount: '28000', user_id: '6436c0f0d1e595c7ddd5149f' } ]
   }
 ]
+# retrieving 'location' collection
 TripCollaborator> db.location.find();
 [
   {
@@ -57,6 +60,7 @@ TripCollaborator> db.location.find();
     end_date: '03-12-2022'
   }
 ]
+   #retrieving spectic data from 'person'
 TripCollaborator> db.person.find({username:"amrutha"});
 [
   {
@@ -67,6 +71,7 @@ TripCollaborator> db.person.find({username:"amrutha"});
     trips: [ { trip_id: 'ch008', role: 'participant' } ]
   }
 ]
+ #retrieving spectic data from 'location'
 TripCollaborator> db.location.find({trip_id:"him007"});
 [
   {
@@ -77,6 +82,7 @@ TripCollaborator> db.location.find({trip_id:"him007"});
     end_date: '03-12-2022'
   }
 ]
+  #updating password data in 'person'
 TripCollaborator> db.person.updateOne({username:"kavitha"},{$set:{password:"gy
 h"}});
 {
@@ -86,14 +92,18 @@ h"}});
   modifiedCount: 1,
   upsertedCount: 0
 }
+   #inserting a new data into 'location'
 TripCollaborator> db.location.insertOne({trip_id:"Singpr887",name:"Singapore",start_date:"11-11-2023",end_date:"18-11-2023"});
 {
   acknowledged: true,
   insertedId: ObjectId("6436dc6e3fbd1f9cf45e773c")
 }
+
+   #deleting specific id from 'location'
 TripCollaborator> db.location.remove({trip_id:"him007"});
 DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
 { acknowledged: true, deletedCount: 1 }
+
 TripCollaborator> db.location.find();
 [
   {
