@@ -1,0 +1,114 @@
+use TripCollaborator
+switched to db TripCollaborator
+TripCollaborator> db.person.find();
+[
+  {
+    _id: ObjectId("6436c0a0d1e595c7ddd5149e"),
+    username: 'kavitha',
+    email: 'kav3-@gmail.com',
+    password: 'xxx',
+    trips: [ { trip_id: 'Eu007', role: 'participant' } ]
+  },
+  {
+    _id: ObjectId("6436c0f0d1e595c7ddd5149f"),
+    username: 'amrutha',
+    email: 'abc45@gmail.com',
+    password: 'xhj',
+    trips: [ { trip_id: 'ch008', role: 'participant' } ]
+  },
+  {
+    _id: ObjectId("6436c253d1e595c7ddd514a0"),
+    username: 'Wilmer',
+    email: 'gthy41@gmail.com',
+    password: 'xsx',
+    trips: [ { trip_id: 'Eu007', role: 'organizer' } ]
+  }
+]
+TripCollaborator> db.trips.find();
+[
+  {
+    _id: ObjectId("6436c8dfd1e595c7ddd514a1"),
+    tname: 'Europe',
+    start_date: '22-05-2020',
+    end_date: '28-05-2020',
+    location: {
+      address: 'afd',
+      city: 'alps',
+      state: 'albama',
+      country: 'Europe'
+    },
+    expenses: [ { amount: '28000', user_id: '6436c0f0d1e595c7ddd5149f' } ]
+  }
+]
+TripCollaborator> db.location.find();
+[
+  {
+    _id: ObjectId("6436cb31d1e595c7ddd514a2"),
+    trip_id: 'paris04',
+    name: 'paris',
+    start_date: '27-08-2022',
+    end_date: '03-09-2022'
+  },
+  {
+    _id: ObjectId("6436cb77d1e595c7ddd514a3"),
+    trip_id: 'him007',
+    name: 'Himalayas',
+    start_date: '27-11-2022',
+    end_date: '03-12-2022'
+  }
+]
+TripCollaborator> db.person.find({username:"amrutha"});
+[
+  {
+    _id: ObjectId("6436c0f0d1e595c7ddd5149f"),
+    username: 'amrutha',
+    email: 'abc45@gmail.com',
+    password: 'xhj',
+    trips: [ { trip_id: 'ch008', role: 'participant' } ]
+  }
+]
+TripCollaborator> db.location.find({trip_id:"him007"});
+[
+  {
+    _id: ObjectId("6436cb77d1e595c7ddd514a3"),
+    trip_id: 'him007',
+    name: 'Himalayas',
+    start_date: '27-11-2022',
+    end_date: '03-12-2022'
+  }
+]
+TripCollaborator> db.person.updateOne({username:"kavitha"},{$set:{password:"gy
+h"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+TripCollaborator> db.location.insertOne({trip_id:"Singpr887",name:"Singapore",start_date:"11-11-2023",end_date:"18-11-2023"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("6436dc6e3fbd1f9cf45e773c")
+}
+TripCollaborator> db.location.remove({trip_id:"him007"});
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 1 }
+TripCollaborator> db.location.find();
+[
+  {
+    _id: ObjectId("6436cb31d1e595c7ddd514a2"),
+    trip_id: 'paris04',
+    name: 'paris',
+    start_date: '27-08-2022',
+    end_date: '03-09-2022'
+  },
+  {
+    _id: ObjectId("6436dc6e3fbd1f9cf45e773c"),
+    trip_id: 'Singpr887',
+    name: 'Singapore',
+    start_date: '11-11-2023',
+    end_date: '18-11-2023'
+  }
+]
+TripCollaborator>exit
